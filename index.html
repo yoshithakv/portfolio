@@ -14,7 +14,7 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Fuzzy+Bubbles:wght@400;700&display=swap">
 <style>
 /* Layout: bare-bones document. One 680px text column, no cards, no fills; rules and type do the structure. Green only for links and figures.
    Type scale (5 roles, used everywhere):
@@ -35,7 +35,27 @@
   --sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 }
-:root[data-theme="dark"] { --bg: #0d0e0d; --fg: #ececec; --fg-2: #a3a7a4; --fg-3: #737874; --rule: #2a2c2a; --accent: #7cc3a6; --ph: #181a19; --need: #f0b858; color-scheme: dark; }
+/* Blackboard: chalk on a dark slate. Handwritten (Fuzzy Bubbles) for everything; it runs wide, so sizes are trimmed. */
+:root[data-theme="blackboard"] { --bg: #222222; --fg: #f1f1ec; --fg-2: #cfcfc8; --fg-3: #9a9a94; --rule: #5a5a56; --accent: #9fe3b9; --ph: #2b2b2b; --need: #f0d27a; color-scheme: dark; --sans: "Fuzzy Bubbles", "Geist", ui-sans-serif, system-ui, sans-serif; --mono: "Fuzzy Bubbles", "Geist Mono", ui-monospace, monospace; }
+:root[data-theme="blackboard"] .lead { font-size: 19px; line-height: 1.55; }
+:root[data-theme="blackboard"] .title, :root[data-theme="blackboard"] .name, :root[data-theme="blackboard"] .blk-p, :root[data-theme="blackboard"] .cs-sec > p { font-size: 15px; }
+:root[data-theme="blackboard"] .body, :root[data-theme="blackboard"] nav, :root[data-theme="blackboard"] .flow { font-size: 14px; }
+:root[data-theme="blackboard"] .meta, :root[data-theme="blackboard"] .theme { font-size: 12px; }
+:root[data-theme="blackboard"] .sh h2 { font-size: 12px; letter-spacing: 0.08em; }
+:root[data-theme="blackboard"] .sh { border-bottom-style: dashed; }
+:root[data-theme="blackboard"] .mark { filter: invert(1); }
+:root[data-theme="blackboard"] .logo:not(.jpg):not(.mono) { filter: grayscale(1) invert(1); }
+/* Tubelight: Paper, lit by one red tube from the top left. Everything else falls into shadow; text stays white. */
+:root[data-theme="tubelight"] { --bg: #0b0505; --fg: #fff1ee; --fg-2: #ecc9c2; --fg-3: #d9aca4; --rule: rgba(255, 220, 214, 0.2); --accent: #ffd2ca; --ph: rgba(255, 255, 255, 0.05); --need: #ffd27a; color-scheme: dark; }
+:root[data-theme="tubelight"] body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(ellipse 14% 10% at 0% 0%, rgba(255, 90, 70, 0.8), transparent 100%),
+              radial-gradient(ellipse 100% 75% at 0% 0%, rgba(255, 30, 18, 0.7), rgba(255, 30, 18, 0.3) 45%, transparent 80%),
+              radial-gradient(ellipse 160% 120% at 0% 0%, rgba(255, 30, 18, 0.14), transparent 85%); }
+:root[data-theme="tubelight"] .mark { filter: invert(1); }
+:root[data-theme="tubelight"] .photo .frame { background: #e8402f; }
+:root[data-theme="tubelight"] .photo img { filter: grayscale(1) contrast(1.4) brightness(.95); mix-blend-mode: multiply; }
+:root[data-theme="tubelight"] .logo:not(.mono) { filter: grayscale(1) invert(1) sepia(1) saturate(6) hue-rotate(-52deg); }
+:root[data-theme="tubelight"] ::selection { background: #ff5a47; color: #0b0505; }
 
 * { box-sizing: border-box; border-radius: 0 !important; }
 body { background: var(--bg); color: var(--fg); font-family: var(--sans); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
@@ -58,9 +78,8 @@ a:hover { text-decoration-thickness: 2px; }
 header .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 32px 0; flex-wrap: wrap; }
 .name { color: var(--fg); text-decoration: none; font-weight: 500; font-size: 16px; display: inline-flex; align-items: center; gap: 10px; }
 .mark { height: 22px; width: auto; display: block; }
-:root[data-theme="dark"] .mark { filter: invert(1); }
 nav { align-items: center; }
-.theme { font: 13px var(--mono); color: var(--fg-3); background: none; border: 0; padding: 0; cursor: pointer; min-width: 4ch; text-align: right; }
+.theme { font: 13px var(--mono); color: var(--fg-3); background: none; border: 0; padding: 0; cursor: pointer; text-align: right; }
 .theme:hover { color: var(--accent); }
 .name:hover { color: var(--accent); }
 nav { display: flex; gap: 20px; font-size: 15px; }
@@ -764,17 +783,20 @@ document.addEventListener("click", (e) => {
   try { navigator.clipboard.writeText(b.dataset.copy).then(() => toast("Email copied"), fallback); } catch { fallback(); }
 });
 
-/* Theme: light by default; "Ink" is the dark one. Choice is remembered when storage allows. */
+/* Themes: Paper (light, default), Blackboard, Tubelight (red). The button names the next one. Choice is remembered when storage allows. */
+const THEMES = [["light", "Paper"], ["blackboard", "Blackboard"], ["tubelight", "Tubelight"]];
 const themeBtn = document.getElementById("theme");
 const setTheme = (m) => {
-  document.documentElement.dataset.theme = m;
-  themeBtn.textContent = m === "dark" ? "Paper" : "Ink";
-  themeBtn.setAttribute("aria-label", m === "dark" ? "Switch to the light theme, Paper" : "Switch to the dark theme, Ink");
+  const i = Math.max(0, THEMES.findIndex(x => x[0] === m)), next = THEMES[(i + 1) % THEMES.length];
+  document.documentElement.dataset.theme = THEMES[i][0];
+  themeBtn.textContent = next[1];
+  themeBtn.setAttribute("aria-label", `Switch theme to ${next[1]}`);
 };
-let saved = "light"; try { saved = localStorage.getItem("theme") === "dark" ? "dark" : "light"; } catch {}
+let saved = "light"; try { saved = localStorage.getItem("theme") || "light"; } catch {}
 setTheme(saved);
 themeBtn.addEventListener("click", () => {
-  const m = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  const i = THEMES.findIndex(x => x[0] === document.documentElement.dataset.theme);
+  const m = THEMES[(i + 1) % THEMES.length][0];
   setTheme(m); try { localStorage.setItem("theme", m); } catch {}
 });
 
