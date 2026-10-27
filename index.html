@@ -113,6 +113,7 @@ section { display: grid; gap: 20px; }
 .tile .thumb { aspect-ratio: 4 / 3; background: var(--ph); max-width: 100%; transition: outline-color .15s; outline: 2px solid transparent; outline-offset: -1px; }
 @media (hover: hover) { .tile:hover .thumb { outline-color: var(--accent); } }
 .tile .top .meta { white-space: nowrap; }
+.tile .title { font-weight: 400; }
 .tile .top { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
 @media (hover: hover) { .tile:hover .title { color: var(--accent); } }
 
@@ -616,20 +617,20 @@ const SHENANIGANS = [
 
 /* People who shaped my work. A title shows once it is filled in; without one the row shows just the name. */
 const INFLUENCES = [
-  { n: "Chitra Viswanathan", url: "https://www.linkedin.com/in/chitra-viswanathan-b36a19218/", title: "" },
   { n: "Amogh Ravi", url: "https://www.linkedin.com/in/amogh-ravindra-80379627/", title: "" },
   { n: "Shreeya Malpani", url: "https://www.linkedin.com/in/shreeya-malpani-43781847/", title: "" },
   { n: "Marc Roca", url: "https://www.linkedin.com/in/minimalminds/", title: "" },
-  { n: "Aleccia Rullo", url: "https://www.linkedin.com/in/alessiarullo/", title: "" },
+  { n: "Alessia Rullo", url: "https://www.linkedin.com/in/alessiarullo/", title: "" },
   { n: "Marta Domingo", url: "https://www.linkedin.com/in/marta-domingo/", title: "" },
   { n: "Pratul Kalia", url: "https://www.linkedin.com/in/pratulkalia/", title: "" },
-  { n: "Sunit", url: "https://www.linkedin.com/in/sunit-design-singh/", title: "" },
+  { n: "Sunit Singh", url: "https://www.linkedin.com/in/sunit-design-singh/", title: "" },
   { n: "Javier Tejedor", url: "https://www.linkedin.com/in/javier-tejedor-/", title: "" },
   { n: "Bernadett Sztano", url: "https://www.linkedin.com/in/bernadett-sztano/", title: "" },
   { n: "Taya Mikhailova", url: "https://www.linkedin.com/in/taya-mikhaylova-970936236/", title: "" },
   { n: "Clara Subirats", url: "https://www.linkedin.com/in/clara-subirats/", title: "" },
   { n: "Gemma Busquets", url: "https://www.linkedin.com/in/gemmabusquets/", title: "" },
-  { n: "Daniel Burka", url: "https://www.linkedin.com/in/dburka/", title: "" }
+  { n: "Daniel Burka", url: "https://www.linkedin.com/in/dburka/", title: "" },
+  { n: "Chitra Viswanathan", url: "https://www.linkedin.com/in/chitra-viswanathan-b36a19218/", title: "" }
 ];
 
 /* Hover notes on the interests in the Side quests intro */
