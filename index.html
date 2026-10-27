@@ -132,6 +132,7 @@ section { display: grid; gap: 20px; }
 .r .role { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .logo { width: 56px; height: 40px; object-fit: contain; object-position: left center; flex: none; display: block; }
 .logo.jpg { background: #fff; width: 40px; }
+.logo.fyno { width: 50px; height: 36px; }
 .logo.mono { display: grid; place-items: center; width: 40px; background: var(--accent); color: var(--bg); font: 600 16px var(--sans); }
 .r ul { padding-left: 18px; margin-top: 6px; display: grid; gap: 2px; }
 .r .body + .body { margin-top: 2px; }
@@ -142,10 +143,11 @@ section { display: grid; gap: 20px; }
 .x:first-child { padding-top: 4px; }
 .x .title { font-weight: 400; }
 .x .who { display: flex; align-items: center; gap: 12px; min-width: 0; }
-.x .logo { width: auto; max-width: 44px; height: 30px; object-position: center; }
-.x .logo.jpg { width: 30px; }
+.x .logo { width: 44px; height: 30px; object-position: center; }
+.x .logo.jpg { width: 30px; margin-inline: 7px; }
+.x .logo.fyno { height: 24px; padding-inline: 4px; }
 .x .who .logo { flex: none; }
-.x .logo.mono { width: 30px; font-size: 14px; }
+.x .logo.mono { width: 30px; margin-inline: 7px; font-size: 14px; }
 .x .role { color: var(--fg-2); font-size: 15px; text-align: left; justify-self: start; }
 .x .meta { justify-self: end; }
 .people { display: grid; grid-template-columns: repeat(auto-fill, minmax(132px, 1fr)); gap: 20px; }
@@ -645,11 +647,11 @@ const sh = (title, action = "") => `<div class="sh"><h2>${title}</h2>${action}</
 
 const tile = (c) => `<a class="tile" href="#${c.slug}">
   <div class="thumb" aria-hidden="true"></div>
-  <div class="top"><span class="title">${c.title}</span><span class="meta">${c.year}</span></div>
+  <div class="top"><span class="title">${c.title}</span></div>
   <span class="meta">${c.tags.join(" · ")}</span></a>`;
 
 const item = (c) => `<li><a class="item" href="#${c.slug}">
-  <span class="title">${c.title}</span><span class="meta">${c.year}</span>
+  <span class="title">${c.title}</span>
   <span class="body">${c.card}</span>
   <span class="meta kw">${c.tags.join(" · ")}</span></a></li>`;
 
@@ -663,7 +665,7 @@ const contact = () => `<section id="contact">
 
 function logo(k) {
   if (k === "C") return `<span class="logo mono" aria-hidden="true">C</span>`;
-  return `<img class="logo ${k === "nof" ? "jpg" : ""}" src="${LOGOS[k]}" alt="">`;
+  return `<img class="logo ${k === "nof" ? "jpg" : k === "fyno" ? "fyno" : ""}" src="${LOGOS[k]}" alt="">`;
 }
 
 function viewHome() {
