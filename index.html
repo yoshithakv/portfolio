@@ -169,7 +169,7 @@ section { display: grid; gap: 20px; }
 .tape { position: absolute; z-index: 8; pointer-events: none; opacity: 0; transition: opacity .15s; width: max-content; max-width: min(240px, 72vw); padding: 5px 16px 7px; background: #e8d7a7; color: #2a2823; font: 400 16px/1.25 var(--hand); text-align: left; text-decoration: none; white-space: normal; transform: rotate(-1.8deg);
   clip-path: polygon(0 0, 3% 12%, 0 25%, 3% 38%, 0 50%, 3% 62%, 0 75%, 3% 88%, 0 100%, 100% 100%, 97% 88%, 100% 75%, 97% 62%, 100% 50%, 97% 38%, 100% 25%, 97% 12%, 100% 0); }
 .tipper, .hv { position: relative; }
-.hv { cursor: default; }
+.hv { cursor: default; text-decoration: underline dotted var(--fg-3); text-decoration-thickness: 1px; text-underline-offset: 3px; }
 .tipper:focus-visible > .tape, .hv:focus-visible > .tape, .hv.open > .tape { opacity: 1; }
 @media (hover: hover) { .tipper:hover > .tape, .hv:hover > .tape { opacity: 1; } }
 .tipper > .tape { bottom: calc(100% + 6px); left: 0; }
@@ -249,7 +249,7 @@ footer .wrap { padding-block: 24px 40px; border-top: 1px solid var(--rule); disp
   .screens, .imgs.c2 { grid-template-columns: minmax(0, 1fr); }
   .imgs.c3 { gap: 10px; }
     .hero { gap: 24px; padding-top: 8px; padding-bottom: 40px; }
-  .photo > .tape { top: calc(100% + 10px); left: 0; }
+  .photo > .tape { top: auto; bottom: 20px; left: calc(100% + 12px); max-width: max(110px, calc(100vw - 216px)); }
   .photo { width: 148px; }
   .x { grid-template-columns: minmax(0, 1fr) auto; gap: 2px 16px; align-items: baseline; }
   .x .who { grid-column: 1 / -1; align-items: center; }
@@ -677,7 +677,7 @@ function viewHome() {
       </div>
       <div class="intro">
         <p class="lead">Product designer working across research, product strategy and design, for B2B tools with complex workflows and consumer mobile and web interfaces alike.</p>
-        <p class="body">I like designing services across digital and physical touchpoints. I shape strategy, prototype in code, and work closely with cross-functional teams. I trained in service design at BAU Barcelona.</p>
+        <p class="body">I like designing services across digital and physical touchpoints. I shape strategy, prototype in code, and work closely with cross-functional teams. I trained in service design at ${ext("BAU Barcelona", "https://www.baued.es/en/studies/masters-and-postgraduate-degrees/master-in-service-design-and-customer-experience-cx#projects-list")}.</p>
       </div>
     </section>
     <section id="work">
