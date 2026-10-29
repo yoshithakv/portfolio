@@ -152,6 +152,8 @@ section { display: grid; gap: 20px; }
 .x .logo.mono { width: 30px; font-size: 14px; }
 .x .role { color: var(--fg-2); font-size: 15px; text-align: left; justify-self: start; }
 .x .meta { justify-self: end; }
+.x .vid { grid-column: 1 / -1; margin-top: 12px; }
+@media (max-width: 560px) { .x .vid { grid-column: 1; } }
 .people { display: grid; grid-template-columns: repeat(auto-fill, minmax(132px, 1fr)); gap: 20px; }
 .person { display: grid; gap: 2px; align-content: start; }
 .person .title { font-weight: 400; }
@@ -241,7 +243,7 @@ section { display: grid; gap: 20px; }
 figure { margin: 0; display: grid; gap: 8px; }
 .ph { background: var(--ph); aspect-ratio: 16 / 9; max-width: 100%; display: grid; place-items: center; padding: 16px; text-align: center; }
 .ph.sq { aspect-ratio: 4 / 3; }
-figcaption { font-size: 13px; color: var(--fg-3); }
+figcaption { font-size: 15px; color: var(--fg-3); }
 .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; padding-block: 16px; border-block: 1px solid var(--rule); }
 .stats .n { font-size: 24px; font-weight: 600; color: var(--accent); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; line-height: 1.2; }
 .cs-sec > p { font-size: 15px; color: var(--fg); max-width: 64ch; }
@@ -256,6 +258,7 @@ pre .c { color: var(--fg-3); }
 .results { padding-left: 18px; display: grid; gap: 6px; }
 .results strong { color: var(--accent); font-weight: 600; }
 
+.claude-mark { width: 1.1em; height: 1.1em; vertical-align: -0.2em; margin-inline: 1px; }
 footer .wrap { padding-block: 24px 40px; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 .toast { position: fixed; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); left: 50%; transform: translateX(-50%); background: var(--fg); color: var(--bg); padding: 8px 12px; font-size: 13px; z-index: 30; }
 
@@ -307,7 +310,7 @@ footer .wrap { padding-block: 24px 40px; border-top: 1px solid var(--rule); disp
 
 <footer>
   <div class="wrap meta">
-    <span>Designed and built by Yoshitha 🐈‍⬛ 2026.</span>
+    <span>Designed and built with <svg class="claude-mark" role="img" aria-label="Claude" width="16" height="16" viewBox="0 0 248 248" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M52.4285 162.873L98.7844 136.879L99.5485 134.602L98.7844 133.334H96.4921L88.7237 132.862L62.2346 132.153L39.3113 131.207L17.0249 130.026L11.4214 128.844L6.2 121.873L6.7094 118.447L11.4214 115.257L18.171 115.847L33.0711 116.911L55.485 118.447L71.6586 119.392L95.728 121.873H99.5485L100.058 120.337L98.7844 119.392L97.7656 118.447L74.5877 102.732L49.4995 86.1905L36.3823 76.62L29.3779 71.7757L25.8121 67.2858L24.2839 57.3608L30.6515 50.2716L39.3113 50.8623L41.4763 51.4531L50.2636 58.1879L68.9842 72.7209L93.4357 90.6804L97.0015 93.6343L98.4374 92.6652L98.6571 91.9801L97.0015 89.2625L83.757 65.2772L69.621 40.8192L63.2534 30.6579L61.5978 24.632C60.9565 22.1032 60.579 20.0111 60.579 17.4246L67.8381 7.49965L71.9133 6.19995L81.7193 7.49965L85.7946 11.0443L91.9074 24.9865L101.714 46.8451L116.996 76.62L121.453 85.4816L123.873 93.6343L124.764 96.1155H126.292V94.6976L127.566 77.9197L129.858 57.3608L132.15 30.8942L132.915 23.4505L136.608 14.4708L143.994 9.62643L149.725 12.344L154.437 19.0788L153.8 23.4505L150.998 41.6463L145.522 70.1215L141.957 89.2625H143.994L146.414 86.7813L156.093 74.0206L172.266 53.698L179.398 45.6635L187.803 36.802L193.152 32.5484H203.34L210.726 43.6549L207.415 55.1159L196.972 68.3492L188.312 79.5739L175.896 96.2095L168.191 109.585L168.882 110.689L170.738 110.53L198.755 104.504L213.91 101.787L231.994 98.7149L240.144 102.496L241.036 106.395L237.852 114.311L218.495 119.037L195.826 123.645L162.07 131.592L161.696 131.893L162.137 132.547L177.36 133.925L183.855 134.279H199.774L229.447 136.524L237.215 141.605L241.8 147.867L241.036 152.711L229.065 158.737L213.019 154.956L175.45 145.977L162.587 142.787H160.805V143.85L171.502 154.366L191.242 172.089L215.82 195.011L217.094 200.682L213.91 205.172L210.599 204.699L188.949 188.394L180.544 181.069L161.696 165.118H160.422V166.772L164.752 173.152L187.803 207.771L188.949 218.405L187.294 221.832L181.308 223.959L174.813 222.777L161.187 203.754L147.305 182.486L136.098 163.345L134.745 164.2L128.075 235.42L125.019 239.082L117.887 241.8L111.902 237.31L108.718 229.984L111.902 215.452L115.722 196.547L118.779 181.541L121.58 162.873L123.291 156.636L123.14 156.219L121.773 156.449L107.699 175.752L86.304 204.699L69.3663 222.777L65.291 224.431L58.2867 220.768L58.9235 214.27L62.8713 208.48L86.304 178.705L100.44 160.155L109.551 149.507L109.462 147.967L108.959 147.924L46.6977 188.512L35.6182 189.93L30.7788 185.44L31.4156 178.115L33.7079 175.752L52.4285 162.873Z" fill="#D97757"/> </svg> by Yoshitha 🐈‍⬛ 2026.</span>
     <span>Bengaluru, India &bull; <span id="local-time" style="white-space: nowrap"></span></span>
   </div>
 </footer>
@@ -340,7 +343,7 @@ const CASES = [
     tagline: "Unifying event management for 400 partners and the ops team in one B2B platform.",
     card: "Partners sent event details over Google Sheets; ops worked in a tool nobody owned. I merged both into one platform with scoped permissions.",
     metric: "~400 partners signed up",
-    role: "Senior Product Designer (sole designer)", timeline: "Aug 2025 – Present",
+    role: "Senior Product Designer", timeline: "Aug 2025 – Present",
     team: "Head of Product & Engineering, FE developer",
     tags: ["B2B", "Internal tooling", "Permissions"], thumb: "dash",
     heroNote: "Add GIF / MP4 of the event creation flow",
@@ -362,6 +365,7 @@ const CASES = [
       innovation: "Slots, multi-slot inventory and approvals became modular patterns that behave the same for one slot or many. The role decides which controls appear."
     },
     build: {
+      ps: true,
       title: "AI prototyping & technical execution",
       focus: "Each Backstage feature shipped as a written spec plus a working HTML clickthrough built with Claude Code. Stakeholders clicked through behaviour instead of reading static frames, and engineering got a reference that already encoded the design intent.",
       code: `<span class="c"># one folder per feature</span>
@@ -380,8 +384,6 @@ tracerbullet/
       { t: "Approvals queue", d: "Ops reviews partner submissions", k: "list" }
     ],
     results: [
-      { m: "~400", t: "Partners signed up to Backstage as of Oct 2026." },
-      { m: "200+", t: "Active partners using Backstage as their ticketing platform." },
       { m: "1 Sep", t: "2026 cutover with engineering: legacy system frozen, data migrated, live transactions tested on the quietest weekday, then live." },
       { m: "2 → 1", t: "The Google Sheets process and the unowned internal tool, replaced by one platform." }
     ]
@@ -413,6 +415,7 @@ tracerbullet/
       innovation: "Instead of adding features at the top of the funnel, I specced a pause option and in-app cancellation, and used PRDs to cut or deprioritise features like onboarding and genre taxonomy."
     },
     build: {
+      ps: true,
       title: "Prototyping in code",
       focus: "I designed the end-to-end flows and UI for both releases and coded minor parts of the app with Claude Code, in Expo / React Native. RSVP-only events shipped after launch so members could join events the company doesn't ticket.",
       code: null, need: "screens or PRs you shipped to production",
@@ -424,8 +427,6 @@ tracerbullet/
       { t: "RSVP-only events", d: "For events we don't ticket", k: "phone" }
     ],
     results: [
-      { m: "~5K", t: "Weekly average visitors to the app." },
-      { m: "~250", t: "Event bookings per week." },
       { m: "8", t: "Reasons for cancelling, now driving a retention-first roadmap." },
       { m: "2", t: "App versions shipped: the first release and the Expo redesign." }
     ]
@@ -475,8 +476,6 @@ tracerbullet/
       { t: "Inline error state", d: "Misconfigured node flagged on canvas", k: "canvas" }
     ],
     results: [
-      { m: "50%", t: "Of all active users adopted it within 90 days as the old version was sunset." },
-      { m: "−27%", t: "First-run errors, caught in test runs instead of production." },
       { m: "Flows", t: "Later adapted as the base for Fyno Flows, a Meta WhatsApp flow builder." }
     ]
   },
@@ -519,9 +518,6 @@ tracerbullet/
       { t: "Fallback guidance", d: "Appears after hesitation", k: "list" }
     ],
     results: [
-      { m: "+28%", t: "Users going from signup to first notification sent." },
-      { m: "↓", t: "Onboarding and setup support tickets dropped sharply." },
-      { m: "—", t: NEED("ticket count before and after, if you have it") }
     ]
   },
   {
@@ -672,13 +668,20 @@ const JOBS = [
     pts: ["Co-designed the FitStart campaign: 17% more interactions in 6 hours, 8% sales uplift.", `Solo-designed the ${ext("Cult Academy", "https://cultacademy.thinkific.com/bundles/Cult-certified-Fitness-Trainer")} logo mark.`] }
 ];
 
+const READS = [
+  { t: "Diátaxis", d: "A systematic guide to technical documentation authoring", url: "https://diataxis.fr/" },
+  { t: "Medium · UX Collective", d: "Being a designer used to feel like a career—now it just feels like a job", url: "https://uxdesign.cc/being-a-designer-used-to-feel-like-a-career-now-it-just-feels-like-a-job-ae29ee95b948" },
+  { t: "Interface Craft", d: "A working library for those committed to designing with uncommon care", url: "https://www.interfacecraft.dev/library?collection=practical-demonstration", thanks: true },
+  { t: "Making Software", d: "A reference manual for people who design and build software", url: "https://www.makingsoftware.com/", thanks: true }
+];
+
 /* Side quests: a row shows on the live site only once it has a url. Without one it appears in ?draft with a [need] marker. */
 const SHENANIGANS = [
   { t: "Letterboxd", d: "Films I've watched", url: "https://letterboxd.com/yoyoshyoshi/" },
-  { t: "Writing", d: "Personal blog", url: "https://yoshitha.net" },
-  { t: "Visual Design", d: "Instagram", url: "https://www.instagram.com/_y_o_s_h_/" },
-  { t: "Film title design", d: "Ondu Kaadina Madhyadholge, by Untitled Rhapsody", url: "https://untitledrhapsody.com/short-films/ondu-kaadina-madhyadholge" },
-  { t: "Intro animation and Short film cinematography", d: "Trial Run, for Piece of Paper Productions", url: "https://youtu.be/Y4lT423WCb4" },
+  { t: "Personal blog", d: "Latest: <a href=\"https://yoshitha.net/blog/figma-is-not-reality/\" target=\"_blank\" rel=\"noopener\">figma is not reality.</a> (Aug 2026)", url: "https://yoshitha.net" },
+  { t: "36 Days of Type 2023", d: "A yearly typography challenge", url: "https://www.instagram.com/_y_o_s_h_/" },
+  { t: "Film title design", d: "Ondu Kaadina Madhyadholge, by Untitled Rhapsody", url: "https://untitledrhapsody.com/short-films/ondu-kaadina-madhyadholge", yt: "WEDY2TaXtl8" },
+  { t: "Intro animation and Short film cinematography", d: "Trial Run, for Piece of Paper Productions", url: "https://youtu.be/Y4lT423WCb4", yt: "Y4lT423WCb4" },
   { t: "36 Days of Type", d: "Compilation", url: null },
   { t: "Typography", d: "Selected work", url: null },
   { t: "Playlists", d: "Music I've put together", url: null }
@@ -749,7 +752,7 @@ function viewHome() {
       </div>
     </section>
     <section id="work">
-      ${sh(`Work · ${CASES.length} case studies`)}
+      ${sh("Recent work")}
       <div class="grid">${CASES.map(tile).join("")}</div>
     </section>
     <section id="about">
@@ -787,6 +790,16 @@ function viewHome() {
         <div class="x nl">
           <div class="who"><span class="title">${s.url ? ext(s.t, s.url) : s.t}</span></div>
           <span class="role">${s.d}${s.url ? "" : " " + NEED("link or file")}</span>
+          ${s.yt ? `<div class="shot embed vid"><iframe src="https://www.youtube-nocookie.com/embed/${s.yt}" title="${s.t}" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>` : ""}
+        </div>`).join("")}
+      </div>
+    </section>
+    <section id="reads">
+      ${sh("Latest reads")}
+      <div class="xs">${READS.map(r => `
+        <div class="x nl">
+          <div class="who"><span class="title">${ext(r.t, r.url)}</span></div>
+          <span class="role">${r.d}${r.thanks ? `<br><span style="color:var(--fg-3)">Thanks to ${ext("Abhimanyu", "https://manyu.now/")}</span>` : ""}</span>
         </div>`).join("")}
       </div>
     </section>
@@ -820,7 +833,7 @@ function viewHome() {
    { t: "need", text }                      marker for something still to add */
 /* Real screens per case study (files in img/), always one column. phone: narrow column; narrow: medium width; embed: a video iframe. */
 const SHOTS = {
-  "backstage": { note: "Screens from the Backstage prototype, with sample data.", items: [
+  "backstage": { note: "", items: [
     { src: "img/backstage-events.jpg", t: "Events", d: "The list of an organisation's events." },
     { src: "img/backstage-create-1.jpg", t: "Create event, step 1", d: "Event details." },
     { src: "img/backstage-create-2.jpg", t: "Create event, step 2", d: "Slots." },
@@ -850,7 +863,6 @@ const SHOTS = {
     { phones: ["img/app-pass-4.jpg", "img/app-pass-5.jpg", "img/app-pass-6.jpg"], t: "More of the Access Pass page", d: "Coupon code, venues, testimonials and snapshots." },
     { row: ["img/email-reminder.jpg", "img/email-cancel.jpg", "img/whatsapp-preview.jpg"], t: "Emails and WhatsApp", d: "An event reminder email, a booking cancelled email, and an event link shared in WhatsApp." } ] },
   "fyno-route-builder": { note: "", items: [
-    { src: "img/fyno-canvas.jpg", t: "Workflow canvas", d: "A workflow with the settings for a Notification Event step open on the right." },
     { src: "img/fyno-triggers.jpg", t: "Choose a trigger", d: "Meta Flow, Mixpanel, MoEngage, Virtual number, Webhook and Notification Event." },
     { src: "img/fyno-webhook.jpg", t: "Webhook trigger", d: "HTTP method, content type, query parameters and headers." },
     { src: "img/fyno-moengage.jpg", t: "MoEngage trigger", d: "Delivery tracking URL and preferred WhatsApp integration." },
@@ -884,27 +896,14 @@ const SHOTS = {
     { src: "img/dek-3.jpg", t: "Generate portfolio", d: "Format and tone controls" } ] } */
 };
 function blocksFor(c) {
+  const shots = SHOTS[c.slug]
+    ? { t: "imgs", cols: 1, note: SHOTS[c.slug].note, items: SHOTS[c.slug].items.map(s => ({ src: s.src, phones: s.phones, row: s.row, narrow: s.narrow, embed: s.embed, alt: s.t, cap: `<span style="color:var(--fg)">${s.t}.</span> ${s.d}` })) }
+    : { t: "imgs", cols: c.screensCols || 2, ratio: c.screensRatio || "4/3", items: c.screens.map(s => ({ note: "screen", cap: `<span style="color:var(--fg)">${s.t}.</span> ${s.d}` })) };
   return [
     c.thumbImg ? { t: "hero", src: `img/thumb-${c.slug}.jpg`, alt: c.title } : { t: "img", note: c.heroNote },
     { t: "stats", items: c.stats },
-    { t: "sec", title: "Context & challenge" },
-    { t: "text", lab: "Problem.", text: c.challenge.problem },
-    { t: "text", lab: "Goal.", text: c.challenge.goal },
-    { t: "sec", title: "System & workflow" },
-    { t: "text", text: c.system.intro },
-    { t: "flow", rows: c.system.flow },
-    { t: "text", lab: "Key move.", text: c.system.innovation },
-    { t: "sec", title: c.build.title },
-    { t: "text", text: c.build.focus },
-    ...(c.build.code ? [{ t: "code", code: c.build.code, cap: c.build.codeCap }] : []),
-    ...(c.build.need ? [{ t: "need", text: c.build.need }] : []),
-    { t: "text", lab: "Takeaway.", text: c.build.takeaway },
-    { t: "sec", title: "Key screens" },
-    SHOTS[c.slug]
-      ? { t: "imgs", cols: 1, note: SHOTS[c.slug].note, items: SHOTS[c.slug].items.map(s => ({ src: s.src, phones: s.phones, row: s.row, narrow: s.narrow, embed: s.embed, alt: s.t, cap: `<span style="color:var(--fg)">${s.t}.</span> ${s.d}` })) }
-      : { t: "imgs", cols: c.screensCols || 2, ratio: c.screensRatio || "4/3", items: c.screens.map(s => ({ note: "screen", cap: `<span style="color:var(--fg)">${s.t}.</span> ${s.d}` })) },
-    { t: "sec", title: "Results & impact" },
-    { t: "results", items: c.results }
+    { t: "text", text: c.card },
+    shots
   ];
 }
 
@@ -950,7 +949,7 @@ function viewCase(c) {
     <section class="cs-head">
       <h1>${c.title}</h1>
       <p class="lead" style="color:var(--fg-2)">${c.tagline}</p>
-      <p class="meta dots"><span>${c.role}</span><span>${c.timeline}</span><span>${c.team}</span></p>
+      <p class="meta dots"><span>${c.tags.join("</span><span>")}</span></p>
       ${c.live.length ? `<div class="live">${c.live.map(([l, u]) => ext(l, u)).join("")}</div>` : ""}
     </section>
     <div class="blocks">${renderBlocks(c.blocks || blocksFor(c))}</div>
@@ -963,7 +962,7 @@ function viewCase(c) {
 
 /* ---------- Router ---------- */
 const app = document.getElementById("app");
-const SECTIONS = ["work", "about", "experience", "skills", "volunteering", "side-quests", "influence", "contact"];
+const SECTIONS = ["work", "about", "experience", "skills", "volunteering", "side-quests", "reads", "influence", "contact"];
 function render() {
   const key = (location.hash || "#").slice(1);
   const c = CASES.find(x => x.slug === key);
