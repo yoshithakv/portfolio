@@ -786,10 +786,10 @@ function viewHome() {
     <section id="side-quests">
       ${sh("Side quests")}
       <p class="body">I love ${hv("cinema", "recent watch: Clayface")}, ${hv("food", "hit me up for recs in Bengaluru or Barcelona")}, ${hv("typography", "check instagram")}, ${hv("photography", "iPhone / Panasonic Camcorder / Nikon D50")}, ${hv("fashion", "thrifts and layers &lt;3")} and ${hv("music", "keys and carnatic")}. This is where they spill over.</p>
-      <div class="xs">${SHENANIGANS.filter(s => s.url || DRAFT).map(s => `
+      <div class="xs">${SHENANIGANS.filter(s => s.url || s.yt || DRAFT).map(s => `
         <div class="x nl">
-          <div class="who"><span class="title">${s.url ? ext(s.t, s.url) : s.t}</span></div>
-          <span class="role">${s.d}${s.url ? "" : " " + NEED("link or file")}</span>
+          <div class="who"><span class="title">${s.url && !s.yt ? ext(s.t, s.url) : s.t}</span></div>
+          <span class="role">${s.d}${s.url || s.yt ? "" : " " + NEED("link or file")}</span>
           ${s.yt ? `<div class="shot embed vid"><iframe src="https://www.youtube-nocookie.com/embed/${s.yt}" title="${s.t}" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>` : ""}
         </div>`).join("")}
       </div>
